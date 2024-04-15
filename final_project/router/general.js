@@ -13,7 +13,7 @@ public_users.post("/register", (req,res) => {
   if (username && password)
   {
     if (!isValid(username, users)){
-        users.push({"username":username, "password":password});
+        //users.push({"username":username, "password":password});
         return res.status(200).json({message: "user registered. Now login"})
     } else {
         return res.status(404).json({message:"User already exist"})
@@ -46,7 +46,7 @@ public_users.get('/author/:author',function (req, res) {
     const booksKeys = Object.keys(books);
 
     for(const Key of booksKeys){
-        if ( books[Key].author.toLowerCase() === author){
+        if ( books[Key].author === author){
             matchingBooks.push(books[Key])
         }
     }
@@ -62,7 +62,7 @@ public_users.get('/title/:title',function (req, res) {
   const booksKeys =Object.keys(books);
 
   for(const Key of booksKeys){
-    if (books[Key].title.toLowerCase() === title){
+    if (books[Key].title === title){
         matchingBooks.push(books[Key])
     }
   }
